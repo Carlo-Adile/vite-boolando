@@ -1,0 +1,41 @@
+body{
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@mixin flex-container{
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@mixin flex-row{
+  width:100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-col{
+  width:100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@mixin flex-col-4{
+  display: flex;
+  flex-wrap: wrap;
+  width:calc((100% / 12) * 4);
+  justify-content: center;
+}
+
+@mixin fixed-top{
+  position: fixed;
+  z-index: 1000;
+  box-shadow: 0 0 10px black;
+}

@@ -1,3 +1,2 @@
-$container-width: 80%;
-
-$blue: blue
+@use './partials/structure';
+@use './partials/variables.scss' as *;

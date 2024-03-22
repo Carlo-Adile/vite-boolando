@@ -1,70 +1,74 @@
 <script>
-export default{
-  name:'AppHeader'
+export default {
+  name: 'AppHeader'
 }
 
 </script>
 
 <template>
   <header id="site_header">
-        <div class="navigate">
-            <div class="navigate_parts">
-                Donna Uomo Bambini
-            </div>
-            <div class="navigate_parts logo">
-            </div>
-            <div class="navigate_parts">
-                <i class="fa-regular fa-user"></i>
-                <i class="fa-regular fa-heart"></i>
-                <i class="fa-solid fa-bag-shopping"></i>
-            </div>
+    <div class="container">
+      <div id="navigate" class="row">
+        <div class="col-4">
+          <ul>
+            <li><a href="">Donna</a></li>
+            <li><a href="">Uomo</a></li>
+            <li><a href="">Bambini</a></li>
+          </ul>
         </div>
-    </header>
+        <div class="col-4">
+          <img src="../assets/img/boolean-logo.png" alt="" id="logo">
+        </div>
+        <div class="col-4">
+          <ul>
+            <li><a href="#"><i class="fa-regular fa-user"></i></a></li>
+            <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
+            <li><a href="#"><i class="fa-solid fa-bag-shopping"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </header>
 </template>
 
 <style lang="scss" scoped>
-/* @import '../assets/scss/style';
+@use '../assets/scss/partials/variables' as *;
+@import '../assets/scss/partials/structure';
 
-#navigate{
-  width: $container-width;
-  color: $blue
-} */
-
-#site_header{
-    height:100px;
+#site_header {
+  @include fixed-top;
+  @include header-format;
+  width: 100%;
+  background-color: $header_bg;
 }
 
-.navigate{
-    position:fixed;
-    width:100%;
-    height:75px;
-    background-color: orange;
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
-    z-index: 1000;
-    box-shadow: 0 0 10px black;
+#navigate {
+  height: 75px;
 }
 
-.navigate_parts{
-    display:flex;
-    align-items: center;
-    color:white;
-    font-weight: bold;
-    height:40px;
-    color:white;
-    font-family:sans-serif;
+#logo {
+  height: 40px;
+  display: inline
 }
 
-.navigate_parts i{
-    font-size:1.2rem;
-    letter-spacing: 15px;
-}
+.container {
+  @include flex-container;
 
-.logo{
-    background-image: url(../assets/img/boolean-logo.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    width:150px;
+  .row {
+    @include flex-row;
+
+    .col-4 {
+      @include flex-col-4;
+
+      &:first-child {
+        justify-content: $start-content;
+      }
+
+      &:last-child {
+        justify-content: $end-content;
+      }
+    }
+  }
 }
 </style>
