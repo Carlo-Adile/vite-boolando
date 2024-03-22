@@ -39,8 +39,6 @@ $end-content: flex-end;
     list-style: none;
     display: flex;
     gap:0.6rem;
-
-    
   }
   li{
     display: inline;
@@ -58,3 +56,19 @@ $end-content: flex-end;
   }
 }
 
+@mixin card-format{
+  font-family: sans-serif;
+  
+
+  &:nth-child(1){
+    font-weight: 500;
+  }
+  &:nth-child(2){
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  &:nth-child(3){
+    font-weight: 500;
+  }
+
+}
