@@ -40,7 +40,7 @@ export default {
   @include fixed-top;
   @include header-format;
   width: 100%;
-  background-color: $header_bg;
+  background-color: $header-bg;
 }
 
 #navigate {

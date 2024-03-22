@@ -6,51 +6,64 @@ export default {
 
 <template>
   <footer id="site_footer">
-        <div class="contacts">
-            <div class="contacts_parts">
-                <h4>Boolando s.r.l</h4>
-                <span>Informazioni legali</span>
-                <span>Informativa sulla privacy</span>
-                <span>Diritto di recesso</span>
-            </div>
-            <div class="contacts_parts">
-                <h4>Trovaci anche su</h4>
-                <i class="fa-brands fa-twitter"></i>
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-pinterest"></i>
-                <i class="fa-brands fa-youtube"></i>
-            </div>
+    <div class="container">
+      <div class="row">
+        <col-6>
+          <h4>
+            Boolando s.r.l
+          </h4>
+          <ul>
+            <li><a href="">Informazioni legali</a></li>
+            <li><a href="">Informativa sulla privacy</a></li>
+            <li><a href="">Diritto di recesso</a></li>
+          </ul>
+        </col-6>
+        <div class="col-6">
+          <h4>
+            Trovaci anche su
+          </h4>
+          <ul>
+            <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
+            <li><a href=""><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href=""><i class="fa-brands fa-pinterest"></i></a></li>
+            <li><a href=""><i class="fa-brands fa-youtube"></i></a></li>
+          </ul>
         </div>
-    </footer>
+      </div>
+    </div>
+  </footer>
 </template>
 
 
 
 <style lang="scss" scoped>
-#site_footer{
-    width:100%;
-    background-color: black;
+@use '../assets/scss/partials/variables' as *;
+@import '../assets/scss/partials/structure';
+
+#site_footer {
+  @include footer-format;
+  width: 100%;
+  background-color: $footer-bg;
 }
 
-.contacts{
-    display:flex;
-    width:100%;
-    height:75px;
-    justify-content: space-around;
-    align-items: center;
-}
+.container {
+  @include flex-container;
 
-.contacts_parts{
-    color:white;
-}
+  .row {
+    @include flex-row;
 
-.contacts_parts span{
-    font-size:0.7rem;
-    padding-right:8px;
-}
+    .col-4 {
+      @include flex-col-6;
 
-.contacts_parts i{
-    padding-top:5px;
+      &:first-child {
+        justify-content: $start-content;
+      }
+
+      &:last-child {
+        justify-content: $end-content;
+      }
+    }
+  }
 }
 </style>

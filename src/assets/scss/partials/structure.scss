@@ -34,6 +34,13 @@ body{
   justify-content: center;
 }
 
+@mixin flex-col-6{
+  display: flex;
+  flex-wrap: wrap;
+  width:calc((100% / 12) * 6);
+  justify-content: center;
+}
+
 @mixin fixed-top{
   position: fixed;
   z-index: 1000;
