@@ -1,148 +1,76 @@
 <script>
+import ProductCard from './ProductCard.vue';
+import { products } from '../products.js';
+
 export default {
-  name: 'AppMain'
+  name: 'AppMain',
+  components:{
+    ProductCard
+  },
+  data(){
+    return{
+      products
+    }
+  }
 }
 </script>
 
 <template>
   <main id="site_main">
-        <div class="card">
-            <div class="product relaxed_fit">
-                <div class="discount">-50%</div>
-                <div class="sustainability">Sostenibilità</div>
-                <div id="like">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-                <div class="product_info">
-                    <p id="brand">
-                        Levi's
-                    </p>
-                    <p id="product_name">
-                        RELAXED FIT TEE UNISEX
-                    </p>
-                    <p id="price">
-                        14,99 € <span id="original_price">29,99 €</span>
-                    </p>
-                </div>
-            </div>
-            <div class="product roses_tee">
-                <div class="discount">-30%</div>
-                <div id="like">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-                <div class="product_info">
-                    <p id="brand">
-                        Levi's
-                    </p>
-                    <p id="product_name">
-                        RELAXED FIT TEE UNISEX
-                    </p>
-                    <p id="price">
-                        20,99 € <span id="original_price">29,99 €</span>
-                    </p>
-                </div>
-            </div>
-            <div class="product colori_pastello">
-                <div class="discount">-30%</div>
-                <div id="like">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-                <div class="product_info">
-                    <p id="brand">
-                        Levi's
-                    </p>
-                    <p id="product_name">
-                        RELAXED FIT TEE UNISEX
-                    </p>
-                    <p id="price">
-                        129,99 € <span id="original_price">184,99 €</span>
-                    </p>
-                </div>
-            </div>
-            <div class="product tee_unisex">
-                <div class="discount">-50%</div>
-                <div class="sustainability">Sostenibilità</div>
-                <div id="like">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-                <div class="product_info">
-                    <p id="brand">
-                        Levi's
-                    </p>
-                    <p id="product_name">
-                        RELAXED FIT TEE UNISEX
-                    </p>
-                    <p id="price">
-                        14,99 € <span id="original_price">19,99 €</span>
-                    </p>
-                </div>
-            </div>
-            <div class="product stripe_bodice">
-                <div id="like">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-                <div class="product_info">
-                    <p id="brand">
-                        Levi's
-                    </p>
-                    <p id="product_name">
-                        RELAXED FIT TEE UNISEX
-                    </p>
-                    <p id="price">
-                        99,99 €
-                    </p>
-                </div>
-            </div>
-            <div class="product maglione_black">
-                <div class="sustainability2">Sostenibilità</div>
-                <div id="like">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-                <div class="product_info">
-                    <p id="brand">
-                        Levi's
-                    </p>
-                    <p id="product_name">
-                        RELAXED FIT TEE UNISEX
-                    </p>
-                    <p id="price">
-                        29,99
-                    </p>
-                </div>
-            </div>
-        </div>
-    </main>
+    <div class="container">
+      <div class="row">
+          <ProductCard :product="product" :key="product.id" v-for="product in products" />
+        
+      </div>
+    </div>
+  </main>
+
 </template>
 
-
-
 <style lang="scss" scoped>
-#site_main{
-    padding-top: 25px;
-    padding-bottom:25px;
-    width:100%;
+@use '../assets/scss/partials/variables' as *;
+@import '../assets/scss/partials/structure';
+
+#site_main {
+  padding-top: 125px;
+  padding-bottom: 25px;
+  width: 100%;
+}
+
+.container {
+  @include flex-container;
+
+  .row {
+    @include flex-row;
+    /* gap:0.3rem; */
+
+    .col-4 {
+      @include flex-col-4;
+      
+    }
+  }
 }
 
 /* card of the shop */
 
-.card{
+/* .card{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
+} */
 
-.product{
+/* .product{
     position:relative;
     width:25%;
     height:600px;
     margin-bottom:75px;
     margin-left: 10px;
     margin-right:10px;
-}
+} */
 
 /* list of products with corresponding images */
 
-.relaxed_fit{
+/* .relaxed_fit{
     background-image: url(..//img/1.webp);
     background-size:cover;
     background-repeat: no-repeat;
@@ -212,11 +140,11 @@ export default {
     background-image: url(..//img/6b.webp);
     background-size:cover;
     background-repeat: no-repeat;
-}
+} */
 
 /* product added parts to the card */
 
-.discount{
+/* .discount{
     color:white;
     background-color:orangered;
     font-weight: bold;
@@ -263,11 +191,11 @@ export default {
 
 #like:hover{
     fill:black;
-}
+} */
 
 /* product info parts of the card */
 
-.product_info{
+/* .product_info{
     position:absolute;
     top:100%;
     width:100%;
@@ -286,5 +214,5 @@ export default {
 #original_price{
     color:black;
     text-decoration: line-through;
-}
+} */
 </style>

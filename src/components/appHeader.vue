@@ -64,7 +64,6 @@ export default {
       &:first-child {
         justify-content: $start-content;
       }
-
       &:last-child {
         justify-content: $end-content;
       }
