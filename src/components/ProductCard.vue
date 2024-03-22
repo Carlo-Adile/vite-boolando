@@ -6,6 +6,16 @@ export default {
   props: {
     product: Object
   },
+  data(){
+    return{
+      hovering: false
+    }
+  },
+  methods: {
+    toggleHover(status){
+      this.hovering = status;
+    }
+  },
   computed: {
     hasDiscount() {
       return this.product.badges.some(badge => badge.type === 'discount')
@@ -22,13 +32,9 @@ export default {
     }
   }
 }
-
 </script>
 
 <template>
-
-  <!-- <img :src="product.frontImage" alt="product.name"> -->
-
   <div class="col-4">
     <div class="card">
       <div class="card-header">
@@ -36,23 +42,26 @@ export default {
           <i v-if="product.isInFavorites" class="fa-solid fa-heart"></i>
           <i v-else class="fa-regular fa-heart"></i>
         </div>
-        <img :src="product.frontImage" alt="product.name" class="card-image">
+        <!-- image -->
+        <div @mouseenter="toggleHover(true)" @mouseleave="toggleHover(false)">
+          <img :src="hovering ? product.backImage : product.frontImage" alt="product.name" class="card-image">
+        </div>
       </div>
+      <!-- text description -->
       <div class="card-body">
         <p> {{ product.brand }}</p>
         <p> {{ product.name }}</p>
-        <p v-if="hasDiscount"> {{ discountedPrice }} €</p>
+        <p v-if="hasDiscount" class="discount-format"> <span style="color:red; font-weight: 600;">{{ discountedPrice }} €</span> <span style="text-decoration: line-through;">{{ product.price }} €</span></p>
         <p v-else> {{ product.price }} €</p>
       </div>
-    </div>
+    </div> 
   </div>
-
 </template>
 
 <style lang="scss" scoped>
 @use '../assets/scss/partials/variables' as *;
 @import '../assets/scss/partials/structure';
-
+/*  */
 .favorite-icon {
   background-color: white;
   position: absolute;
@@ -71,7 +80,7 @@ export default {
 .card {
   border-radius: 8px;
   padding: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   position: relative;
 }
 
