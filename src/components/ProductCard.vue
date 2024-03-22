@@ -53,6 +53,12 @@ export default {
         <p> {{ product.name }}</p>
         <p v-if="hasDiscount" class="discount-format"> <span style="color:red; font-weight: 600;">{{ discountedPrice }} €</span> <span style="text-decoration: line-through;">{{ product.price }} €</span></p>
         <p v-else> {{ product.price }} €</p>
+        <!-- badges -->
+        <div v-for="(badge, index) in product.badges" :key="index" class="card-badge" :style="{ left: `${2 + index * 24}%` }">
+          
+          <p :class="{'sostenibilità-badge' : badge.type === 'tag', 'discount-badge' : badge.type === 'discount'}">{{ badge.value }}</p>
+          
+        </div>
       </div>
     </div> 
   </div>
@@ -61,17 +67,6 @@ export default {
 <style lang="scss" scoped>
 @use '../assets/scss/partials/variables' as *;
 @import '../assets/scss/partials/structure';
-/*  */
-.favorite-icon {
-  background-color: white;
-  position: absolute;
-  top: 5%;
-  right: 3%;
-
-  i {
-    margin: 8px;
-  }
-}
 
 .col-4 {
   @include flex-col-4;
@@ -103,4 +98,36 @@ export default {
     @include card-format;
   }
 }
+
+/* badge, icon */
+.favorite-icon {
+  background-color: white;
+  position: absolute;
+  top: 5%;
+  right: 3%;
+
+  i {
+    margin: 8px;
+  }
+}
+
+.card-badge{
+  position:absolute;
+  bottom:22%;
+  font-family: sans-serif;
+  color:white;
+  font-weight: 600;
+  font-size:0.9rem;
+  
+  .sostenibilità-badge{
+    padding:0.6rem;
+    background-color: green;
+  }
+
+  .discount-badge{
+    padding:0.6rem;
+    background-color: red;
+  }
+}
+
 </style>
