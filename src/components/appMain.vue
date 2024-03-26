@@ -11,7 +11,7 @@ export default {
   },
   data() {
     return {
-      products,
+      /* products, */
       state
     }
   },
@@ -20,11 +20,14 @@ export default {
 
     console.log(this.state);
 
-    axios.get('http://localhost:3000/products')
+    /* axios.get('http://localhost:3000/products')
     .then(response => {
       console.log(response)
       this.products = response.data
-    })
+    }) */
+
+    /* get data from state object */
+    this.state.getProducts(this.state.base_products_api_url)
   }
 }
 </script>
@@ -35,10 +38,14 @@ export default {
       <div class="row">
         
         <!-- i miei prodotti -->
-        <ProductCard :product="product" :key="product.id" v-for="product in products" />
+        <!-- <ProductCard :product="product" :key="product.id" v-for="product in products" /> -->
 
-        <!-- usiamo state all'interno del template -->
-        <p> {{  state.message }}</p>
+        <!-- use state to get products -->
+        <ProductCard :product="product" :key="product.id" v-for="product in state.products" />
+
+        <!-- use state inside the template -->
+        <!-- <p> {{  state.message }}</p> -->
+
       </div>
     </div>
   </main>
