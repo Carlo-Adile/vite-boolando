@@ -1,7 +1,8 @@
 <script>
 import ProductCard from './ProductCard.vue';
 import { products } from '../products.js';
-import { state } from '../state.js'
+import { state } from '../state.js';
+import axios from 'axios';
 
 export default {
   name: 'AppMain',
@@ -18,6 +19,12 @@ export default {
     console.log(state);
 
     console.log(this.state);
+
+    axios.get('http://localhost:3000/products')
+    .then(response => {
+      console.log(response)
+      this.products = response.data
+    })
   }
 }
 </script>
