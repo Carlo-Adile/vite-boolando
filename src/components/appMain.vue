@@ -1,8 +1,11 @@
 <script>
-import ProductCard from './ProductCard.vue';
-import { products } from '../products.js';
-import { state } from '../state.js';
+/* static array from products.js */
 import axios from 'axios';
+import { products } from '../products.js';
+/* use reactive state */
+import { state } from '../state.js';
+
+import ProductCard from './ProductCard.vue';
 
 export default {
   name: 'AppMain',
@@ -13,6 +16,11 @@ export default {
     return {
       /* products, */
       state
+    }
+  },
+  methods: {
+    openModalHandler() {
+      console.log('Test: Modal aperta');
     }
   },
   mounted(){
@@ -41,8 +49,9 @@ export default {
         <!-- <ProductCard :product="product" :key="product.id" v-for="product in products" /> -->
 
         <!-- use state to get products -->
-        <ProductCard :product="product" :key="product.id" v-for="product in state.products" />
+        <ProductCard @toggle-modal="openModalHandler" :product="product" :key="product.id" v-for="product in state.products" />
 
+        
         <!-- use state inside the template -->
         <!-- <p> {{  state.message }}</p> -->
 

@@ -50,7 +50,7 @@ export default {
       <!-- text description -->
       <div class="card-body">
         <p> {{ product.brand }}</p>
-        <p> {{ product.name }}</p>
+        <p @click="$emit('toggleModal')"> {{ product.name }}</p>
         <p v-if="hasDiscount" class="discount-format"> <span style="color:red; font-weight: 600;">{{ discountedPrice }}
             €</span> <span style="text-decoration: line-through;">{{ product.price }} €</span></p>
         <p v-else> {{ product.price }} €</p>
