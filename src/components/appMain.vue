@@ -1,6 +1,7 @@
 <script>
 import ProductCard from './ProductCard.vue';
 import { products } from '../products.js';
+import { state } from '../state.js'
 
 export default {
   name: 'AppMain',
@@ -9,8 +10,14 @@ export default {
   },
   data() {
     return {
-      products
+      products,
+      state
     }
+  },
+  mounted(){
+    console.log(state);
+
+    console.log(this.state);
   }
 }
 </script>
@@ -19,8 +26,12 @@ export default {
   <main id="site_main">
     <div class="container">
       <div class="row">
+        
+        <!-- i miei prodotti -->
         <ProductCard :product="product" :key="product.id" v-for="product in products" />
 
+        <!-- usiamo state all'interno del template -->
+        <p> {{  state.message }}</p>
       </div>
     </div>
   </main>
